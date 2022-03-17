@@ -1,0 +1,78 @@
+section {
+	
+	background-color: rgba(255, 0, 0, 0.3);
+	height: 100vh;
+	max-width: 1400px;
+	margin: 0 auto;
+
+	.hero {
+
+		@include media("<=phone") {
+			background-color: blue;
+			// content: "PHONE";
+		}
+		@include media("<=tablet") {
+			background-color: white;
+			// content: "Tablet";		
+		}
+		@include media(">tablet") {
+			background-color: red;
+			// content: "DESKTOP";
+		}
+		// background-color: rgba(0, 0, 0, 0.5);
+		// @include breakpoint-up(xlarge) {
+		// 	background-color: purple;
+		// }
+		// @include breakpoint-up(large) {
+		// 	background-color: red;
+		// }
+		// @include breakpoint-down(medium) {
+		// 	background-color: white;
+		// }
+ 	// 	@include breakpoint-down(small) {
+		// 	background-color: blue;
+		// }
+
+    // max-width: 1440px;
+    margin: 2rem auto;
+    min-height: minmax(600px 70vh);
+    max-height: 500px;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    border: 1px black solid;
+
+
+
+		h1 {
+			color: white;
+			font: {
+				family: cabrito-normal, sans-serif;
+				weight: 700;
+				style: normal;
+				size: 2rem;
+			}
+			text-align: center;
+
+			@include media(">phone", "<=tablet") {
+				color: black;
+			}
+		}
+
+		p.subhead {
+		  color: white;
+			font: {
+				family: soleil, sans-serif;
+				weight: 700;
+				style: normal;
+				size: 1rem;
+			}
+			text-align: center;
+
+			@include media(">phone", "<=tablet") {
+				color: black;
+			}
+
+		}
+	}
+
+}
