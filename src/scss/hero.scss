@@ -1,24 +1,12 @@
 section {
 	
-	background-color: rgba(255, 0, 0, 0.3);
 	height: 100vh;
-	max-width: 1400px;
-	margin: 0 auto;
+	max-width: 1440px;
+
+	// margin: 0 auto;
 
 	.hero {
 
-		@include media("<=phone") {
-			background-color: blue;
-			// content: "PHONE";
-		}
-		@include media("<=tablet") {
-			background-color: white;
-			// content: "Tablet";		
-		}
-		@include media(">tablet") {
-			background-color: red;
-			// content: "DESKTOP";
-		}
 		// background-color: rgba(0, 0, 0, 0.5);
 		// @include breakpoint-up(xlarge) {
 		// 	background-color: purple;
@@ -29,50 +17,75 @@ section {
 		// @include breakpoint-down(medium) {
 		// 	background-color: white;
 		// }
- 	// 	@include breakpoint-down(small) {
+	// 	@include breakpoint-down(small) {
 		// 	background-color: blue;
 		// }
 
-    // max-width: 1440px;
-    margin: 2rem auto;
-    min-height: minmax(600px 70vh);
-    max-height: 500px;
-    padding-top:1rem;
-    padding-bottom:1rem;
-    border: 1px black solid;
+		// background-image: url(/images/wave.svg);
+		// background-size: cover;
+		// background-repeat: no-repeat;
+		// background-position: center center;		
+		// border: 1px red solid;
+		margin: 0 auto;
+		min-height: minmax(720px 70vh);
+		position: relative;
+		overflow: hidden;
+		// max-height: 500px;
+		// padding-top:1rem;
+		// padding-bottom:1rem;
 
-
-
-		h1 {
-			color: white;
-			font: {
-				family: cabrito-normal, sans-serif;
-				weight: 700;
-				style: normal;
-				size: 2rem;
-			}
-			text-align: center;
-
-			@include media(">phone", "<=tablet") {
-				color: black;
-			}
+		@include media("<=phone") {
+			border: 5px blue solid;
+		}
+		@include media("<=tablet") {
+			border: 5px white solid;
+			min-height: 650px;
+		}
+		@include media(">tablet") {
+			border: 5px red solid;
+			min-height: 400px;
 		}
 
-		p.subhead {
-		  color: white;
-			font: {
-				family: soleil, sans-serif;
-				weight: 700;
-				style: normal;
-				size: 1rem;
-			}
-			text-align: center;
+		img#wave {
+			position: absolute;
+			display: block;
+			bottom: 0;
+			left: -100%;
+			width: 200%;
+			height: auto;
+		}
 
-			@include media(">phone", "<=tablet") {
-				color: black;
+		.txt-wrapper {
+			display: block;
+			position: relative;
+			border: 1px dotted red;
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+			font-size: 0;
+
+			img#logo {
+				display: block;
+				width: 600px;
+				margin: 1em auto;
 			}
 
+			p#vote-txt {
+				display: block;
+				color: white;
+				text-align: center;
+				// margin: 0;
+				font: {
+					family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
+					weight: 400;
+					style: normal;
+					size: $font-med;
+				}
+
+				@include media(">phone", "<=tablet") {
+					color: black;
+				}
+			}
 		}
 	}
-
 }

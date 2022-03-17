@@ -12,17 +12,17 @@ const del = require('del'),
 
 // Directory structure
 const dir = {
+	dist:'./build/html/Gerber_Responsive_Homepage_Banner/',
 	html:'./src/html/',
 	js:'./src/js/',
 	scss:'./src/scss/',
-	dist:'./build/html/Gerber_Responsive_Homepage_Banner/',
 	images:'./src/images/'
 }
 
 const prefixerPrefs = {
 	cascade: false
 }
-// const { html, css, dist, images  } = dir;
+// const { dist, html, js, scss, images  } = dir;
 
 // gulp.task('sass')	
 function buildStyles() {
@@ -35,16 +35,24 @@ function buildStyles() {
 
 function build() {
 
-	let _html = gulp.src(dir.html+'*.html').pipe(rename('index.html'))
+	let _html = gulp.src(dir.html+'*.html')
+		.pipe(rename('index.html'));
 
-	let _assets = gulp.src([dir.images+'**', dir.js+'**'])
+	let _js = gulp.src( dir.js+'**');
+	// let _images = gulp.src(dir.images+'**')
+	// 	.pipe(gulp.dest(dir.dist+'images/'));
 
-	return merge(_html, _assets).pipe(gulp.dest(dir.dist));
+	return merge(_html, _js).pipe(gulp.dest(dir.dist));
+}
+
+function images(){
+	return gulp.src(dir.images+'**').pipe(gulp.dest(dir.dist+'images/'));
 }
 
 gulp.task('clean', () => { return del(dir.dist+'**/*'); });
 gulp.task('build', build);
 gulp.task('sass', buildStyles);
+gulp.task('images', gulp.series(images, 'sass', 'build'));
 gulp.task('default', gulp.series('sass', 'build'));
 // gulp.task('watch', function(callback) { return gulp.watch(dir.src+'**/**', gulp.series('default')); callback(); });
 gulp.task('watch', () => { return gulp.watch(['src/*/**'], gulp.series('default'))});
