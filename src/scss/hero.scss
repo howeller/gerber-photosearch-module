@@ -3,89 +3,147 @@ section {
 	height: 100vh;
 	max-width: 1440px;
 
-	// margin: 0 auto;
-
 	.hero {
-
-		// background-color: rgba(0, 0, 0, 0.5);
-		// @include breakpoint-up(xlarge) {
-		// 	background-color: purple;
-		// }
-		// @include breakpoint-up(large) {
-		// 	background-color: red;
-		// }
-		// @include breakpoint-down(medium) {
-		// 	background-color: white;
-		// }
-	// 	@include breakpoint-down(small) {
-		// 	background-color: blue;
-		// }
 
 		// background-image: url(/images/wave.svg);
 		// background-size: cover;
 		// background-repeat: no-repeat;
 		// background-position: center center;		
 		// border: 1px red solid;
+		// min-height: minmax(720px 70vh);
 		margin: 0 auto;
-		min-height: minmax(720px 70vh);
 		position: relative;
 		overflow: hidden;
-		// max-height: 500px;
-		// padding-top:1rem;
-		// padding-bottom:1rem;
 
-		@include media("<=phone") {
-			border: 5px blue solid;
+		@include media(">desktop") {
+			border: 5px red solid;
+			min-height: 400px;
 		}
 		@include media("<=tablet") {
 			border: 5px white solid;
 			min-height: 650px;
 		}
-		@include media(">tablet") {
-			border: 5px red solid;
-			min-height: 400px;
+		@include media("<=phone") {
+			border: 5px blue solid;
+			min-height: 100vh;
 		}
 
-		img#wave {
+		img.wave {
 			position: absolute;
-			display: block;
+			display: none;
 			bottom: 0;
-			left: -100%;
 			width: 200%;
-			height: auto;
+		}
+		img#wave_dt {
+			@include media(">desktop") {display: block; }
+		}
+		img#wave_tab {
+			@include media("<=tablet") {display: block; }
+		}
+		img#wave_m {
+			@include media("<=phone") {display: block; }
 		}
 
-		.txt-wrapper {
-			display: block;
-			position: relative;
-			border: 1px dotted red;
+		.wrapper {
 			width: 100%;
-			height: 100%;
-			margin: 0 auto;
 			font-size: 0;
+			margin: 0 auto;
+		}
 
-			img#logo {
-				display: block;
-				width: 600px;
-				margin: 1em auto;
+		#bubble-wrapper {
+			// position: absolute;
+			border: 2px dashed purple;
+
+			img#book {
+				position: absolute;
+				width: 275px;
+
+				@include media(">desktop") {
+					left: 46%;
+					top: 24%;
+				}
+				@include media("<=tablet") {
+					margin: 0 auto;
+					bottom: 2%;
+					left: 50%;
+					transform:translateX(-50%);
+				}
+				@include media("<=phone") {
+					width: clamp(150px, 26vh, 380px);
+					bottom: clamp(2%, 14vh, 14%);
+					// width: 48%;// 380px;
+					// bottom: 14%;
+				}
+			}			
+		}
+
+		#logo-wrapper {
+			position: relative;
+			height: 100%;
+
+			@include media(">desktop") {
+			}
+			@include media("<=tablet") {
+			}
+			@include media("<=phone") {
 			}
 
-			p#vote-txt {
-				display: block;
+			img#logo {
+				
+				@include media(">desktop") {
+					width: 383px;
+					margin: 0;
+				}
+
+				@include media("<=tablet") {
+					width: 435px;
+					margin: 1rem auto;
+					margin-top: 2rem;
+				}
+
+				@include media("<=phone") {
+					width: 75%;
+					margin: 30% auto 10%;
+				}
+			}
+
+			p#txt {
 				color: white;
+				// content: 'Capture your little one’s silliest, smiliest side for their chance to be Gerber’s next Chief&nbsp;Growing&nbsp;Officer!';
 				text-align: center;
-				// margin: 0;
+				max-width: 80%;
+				margin: 0 auto;
+				// border: 2px dotted pink;
 				font: {
 					family: cabrito-normal, sans-serif; // family: soleil, sans-serif;
 					weight: 400;
 					style: normal;
-					size: $font-med;
 				}
 
-				@include media(">phone", "<=tablet") {
-					color: black;
+				@include media(">desktop") {
+					font-size: $font-dt;
+					position: absolute;
+					max-width: 25rem;
+					right: 3%;//80px;
+					top: 50px;
+				}
+				@include media("<=tablet") {
+					font-size: $font-tab;
+				}
+				@include media("<=phone") {
+					// content: 'Capture your little one’s&nbsp;silliest, smiliest side for their&nbsp;chance to&nbsp;be Gerber’s&nbsp;next Chief&nbsp;Growing&nbsp;Officer!';
+				  font-size: clamp($font-small, 6vw, $font-m);
+				  // padding: 0 10%;
+				  // max-width: 70%;
+					// font-size: $font-m;
 				}
 			}
+			/* p#txt::before {
+				@include media("<=phone") {
+					content: 'Capture your little one’s&nbsp;silliest, smiliest side for their&nbsp;chance to be Gerber’s&nbsp;next\AChief&nbsp;Growing&nbsp;Officer!';
+					white-space: pre-wrap;
+				}
+			} */
 		}
 	}
 }

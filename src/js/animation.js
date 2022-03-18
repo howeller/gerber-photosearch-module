@@ -1,49 +1,73 @@
 (function(window, document){
 
-	let tl;
+	let tl, windowWidth;
 
-	const cl = (txt) => console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;');
+	const cl = txt => console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;');
 	const id = txt => document.getElementById(txt);
 
-	// function cl(txt){console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;'); }
-	// function id(id){return document.getElementById(id); }
-	console.group('Gerber Hero');
+	// console.group('Gerber Hero');
 	function init(e){
-		cl('INIT');
-		startAnimation(window.	innerWidth);
+		cl('init');
+		windowWidth = window.innerWidth;
+		startAnimation(windowWidth);
 	}
 
-	function startAnimation(windowWidth) {
+	function startAnimation() {
 		console.table(windowWidth);
 
-		if (windowWidth > 720) {
+		if (windowWidth > 1024) {
 			animateDesktop();
-		} else {
+		}
+		else if (windowWidth > 780) {
+			animateTablet();
+		} 
+		else {
 			animateMobile();
 		}
 	}
 
 	function onResize(event) {
-		cl('onResize: '+event.target.innerWidth);
+		windowWidth = event.target.innerWidth;
+		tl.seek(0);
 		tl.kill();
-		startAnimation(event.target.innerWidth);
+		cl('onResize: '+windowWidth);
+		startAnimation();
 	}
 
 	function animateDesktop() {
 		cl('animateDesktop!');
 
-		tl = gsap.timeline({ defaults:{ paused:false, duration:1, ease:'power3.out' }});
+		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
 		tl
-			.fromTo('#wave', { y:'100%'},{y:'0%', duration: 2})
-			// .add('frame2','+=1')
-			.fromTo('#logo', { scale:0}, { scale:1, transformOrigin:'center center', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#wave_dt', { x:0, y:'100%'},{y:0})
+			.fromTo('#logo', { scale:0, x:getCenterX('#logo'), y:'50px'}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
 			.add('frame2','+=1')
-			.to('#logo', { scale: .75, duration: 0.3, marginTop:'-1em'}, 'frame2')
-			.to('#wave', { x:'50%', y:'300px', duration: 2}, 'frame2')
-			.fromTo('.txt-wrapper p', {alpha:0, x:'-30px'},{ alpha:1, x:'0px'})
+			.to('#logo', { scale: 1, x: '20%', duration: 2}, 'frame2')
+			.to('#wave_dt', { x:'-50%', y:'60%', duration: 2}, 'frame2')
+			.fromTo('#book', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'}, '-=.5')
+			.fromTo('#txt', {scale:0},{ scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
 			// .seek('frame2')
+			// tl.pause(.6);
+	}
 
+	function animateTablet() {
+		cl('animateTablet!');
+
+		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
+	
+		tl
+			.fromTo('#wave_tab', { y:'100%'},{y:0, duration:.5})
+			// .fromTo('#wave_tab', { x:'-50%', y:'100%'},{y:0})
+			.fromTo('#logo', { scale:0, x:0, y:'50%' }, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.add('frame2','+=1')
+			.to('#logo', { scale: 1, y:0, duration: 1/*, marginTop:'1.5rem'*/}, 'frame2')
+			.to('#wave_tab', {  x:'-50%', y:'45%', duration: 1}, 'frame2')
+			// .to('#wave_tab', { x:0, y:'50%', duration: 1}, 'frame2')
+			.fromTo('#book', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'}, '-=.5')
+			.fromTo('#txt', {scale:0},{ scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			// .seek('frame2')
+			// tl.pause(.6);
 	}
 
 	function animateMobile() {
@@ -51,10 +75,25 @@
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
-		tl.fromTo(['.txt-container p'], {alpha:0, y:'-20px'},{alpha:1, y:'0px'/*, stagger: .75*/})
-
+		tl
+			.fromTo('#wave_m', { y:'100%'},{y:0})
+			.fromTo('#logo', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.add('frame2','+=.1')
+			.to('#wave_m', {  x:'-50%', y:'45%', duration: 1}, 'frame2')
+			.fromTo('#book', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'}, '-=.5')
+			.fromTo('#logo-wrapper', {y:0}, { y:'-10%', duration: 1}, '')
+			.fromTo('#txt', {scale:0},{ scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			// .seek('frame2')
+			// tl.pause(.6);
 	}
-	console.groupEnd();
+
+	function getCenterX(elId){
+		return Math.round(windowWidth / 2 - (gsap.getProperty(elId, 'width') / 2));
+		// cl('	getCenterX '+x);
+		// return x;
+	}
+
+	// console.groupEnd();
 	window.addEventListener('load', init);
 	window.addEventListener('resize', onResize, true);
 	
