@@ -2,7 +2,6 @@ section {
 	
 	height: 100vh;
 	max-width: 1440px;
-
 	.hero {
 
 		// background-image: url(/images/wave.svg);
@@ -14,6 +13,7 @@ section {
 		margin: 0 auto;
 		position: relative;
 		overflow: hidden;
+		visibility: hidden;
 
 		@include media(">desktop") {
 			border: 5px red solid;
@@ -52,29 +52,48 @@ section {
 
 		#bubble-wrapper {
 			// position: absolute;
-			border: 2px dashed purple;
+			border: 2px dashed teal;
 
+			position: absolute;
+			width: 275px;
+
+			@include media(">desktop") {
+				left: 46%;
+				top: 24%;
+			}
+			@include media("<=tablet") {
+				margin: 0 auto;
+				bottom: 2%;
+				left: 50%;
+				transform:translateX(-50%);
+			}
+			@include media("<=phone") {
+				width: clamp(150px, 26vh, 380px);
+				bottom: clamp(2%, 14vh, 14%);
+				// width: 48%;// 380px;
+				// bottom: 14%;
+			}
 			img#book {
+				width: 100%;
+			}
+			img#enter {
 				position: absolute;
-				width: 275px;
+				left: 50%;
+				transform:translateX(-50%);
 
 				@include media(">desktop") {
-					left: 46%;
-					top: 24%;
+					width:  90%;
+					top: -12%;
 				}
 				@include media("<=tablet") {
-					margin: 0 auto;
-					bottom: 2%;
-					left: 50%;
-					transform:translateX(-50%);
+					width:  75%;
+					top: -8%;
 				}
 				@include media("<=phone") {
-					width: clamp(150px, 26vh, 380px);
-					bottom: clamp(2%, 14vh, 14%);
-					// width: 48%;// 380px;
-					// bottom: 14%;
+					width:  90%;
+					top: -12%;
 				}
-			}			
+			}
 		}
 
 		#logo-wrapper {
@@ -96,9 +115,9 @@ section {
 				}
 
 				@include media("<=tablet") {
-					width: 435px;
-					margin: 1rem auto;
-					margin-top: 2rem;
+					width: 400px;
+					margin: 2rem auto 1rem;
+					// margin-top: 2rem;
 				}
 
 				@include media("<=phone") {
@@ -128,11 +147,11 @@ section {
 					top: 50px;
 				}
 				@include media("<=tablet") {
-					font-size: $font-tab;
+				  font-size: clamp(24px, 3vw, $font-tab);
 				}
 				@include media("<=phone") {
 					// content: 'Capture your little one’s&nbsp;silliest, smiliest side for their&nbsp;chance to&nbsp;be Gerber’s&nbsp;next Chief&nbsp;Growing&nbsp;Officer!';
-				  font-size: clamp($font-small, 6vw, $font-m);
+				  font-size: clamp(26px, 6vw, $font-m);
 				  // padding: 0 10%;
 				  // max-width: 70%;
 					// font-size: $font-m;

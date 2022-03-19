@@ -13,6 +13,7 @@ body {
 
 section * {
   display: block;
+  box-sizing: border-box;
 }
 
 section {
@@ -24,6 +25,7 @@ section .hero {
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  visibility: hidden;
 }
 
 section .hero img.wave {
@@ -40,12 +42,19 @@ section .hero .wrapper {
 }
 
 section .hero #bubble-wrapper {
-  border: 2px dashed purple;
+  border: 2px dashed teal;
+  position: absolute;
+  width: 275px;
 }
 
 section .hero #bubble-wrapper img#book {
+  width: 100%;
+}
+
+section .hero #bubble-wrapper img#enter {
   position: absolute;
-  width: 275px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 section .hero #logo-wrapper {
@@ -79,9 +88,14 @@ section .hero #logo-wrapper p#txt {
     display: block;
   }
 
-  section .hero #bubble-wrapper img#book {
+  section .hero #bubble-wrapper {
     left: 46%;
     top: 24%;
+  }
+
+  section .hero #bubble-wrapper img#enter {
+    width: 90%;
+    top: -12%;
   }
 
   section .hero #logo-wrapper img#logo {
@@ -108,21 +122,25 @@ section .hero #logo-wrapper p#txt {
     display: block;
   }
 
-  section .hero #bubble-wrapper img#book {
+  section .hero #bubble-wrapper {
     margin: 0 auto;
     bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
   }
 
+  section .hero #bubble-wrapper img#enter {
+    width: 75%;
+    top: -8%;
+  }
+
   section .hero #logo-wrapper img#logo {
-    width: 435px;
-    margin: 1rem auto;
-    margin-top: 2rem;
+    width: 400px;
+    margin: 2rem auto 1rem;
   }
 
   section .hero #logo-wrapper p#txt {
-    font-size: 28px;
+    font-size: clamp(24px, 3vw, 28px);
   }
 }
 
@@ -136,9 +154,14 @@ section .hero #logo-wrapper p#txt {
     display: block;
   }
 
-  section .hero #bubble-wrapper img#book {
+  section .hero #bubble-wrapper {
     width: clamp(150px, 26vh, 380px);
     bottom: clamp(2%, 14vh, 14%);
+  }
+
+  section .hero #bubble-wrapper img#enter {
+    width: 90%;
+    top: -12%;
   }
 
   section .hero #logo-wrapper img#logo {
