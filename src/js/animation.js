@@ -61,7 +61,7 @@
 			.add(rollInTl('#kid4', kid4), 'end')
 			.add(spinInTl('#enter'))
 			.add(popInTl('#txt'))
-			.seek('frame2')
+			// .seek('frame2')
 			// tl.pause(.6);
 	}
 
