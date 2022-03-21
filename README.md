@@ -14,4 +14,5 @@
 Task Name    | What it Does
 -------------|-----------
 `build` | Runs build.
+`images` | Runs build and copies all images from src/images.
 `sass` | Compiles all SASS into CSS & autoprefixed.
