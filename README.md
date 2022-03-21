@@ -2,7 +2,7 @@
 
 # Gerber.com Responsive Homepage Module
 
-[Preview site >>](https://www.campaign.hogarthww.digital/ctus-nestle/gerber/gerber-h233641/preview/)
+[Preview site >>](https://www.campaign.hogarthww.digital/ctus-nestle/gerber-h233641/preview/)
 
 [JIRA >>](https://hogarthdigital.atlassian.net/browse/CTUS-541)
 
