@@ -47,21 +47,28 @@
 		tl
 			.fromTo('#wave_dt', { x:'-50%', y:'100%'},{y:0})
 			// .fromTo('#wave_dt', { x:0, y:'100%'},{ y:0})
-			.fromTo('#logo', { scale:0, x:getCenterX('#logo'), y:'50px'}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#logo-wrapper', { scale:0, x:getCenterX('#logo-wrapper'), y:'50px'}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#burst-logo', {scale:0},{ scale: 1, transformOrigin:'bottom right', ease:'back.out(1.2)'})
 			.add('frame2','+=1')
-			.to('#logo', { scale: 1, x: '20%', duration: 2}, 'frame2')
-			.to('#wave_dt', { x:0, y:'55%', duration: 1}, 'frame2')
+			.to('#logo-wrapper', { scale: 1, x: '20%', duration: 2}, 'frame2')
+			.to('#wave_dt', { x:0, y:'55%', duration: 2}, 'frame2')
+			// .add(popInOutTl('#burst-logo', 'bottom right', 1))
 			// .fromTo('#book', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'}, '-=.5')
 			// .fromTo('#txt', {scale:0},{ scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
-			.add(popInTl('#book'), '-=.5')
-			.add('end')
+			.add(popInTl('#book'), 'frame2+=1')
+			.add('end', 'frame2+=1')
 			.add(rollInTl('#kid1', kid1), 'end')
 			.add(rollInTl('#kid2', kid2), 'end')
 			.add(rollInTl('#kid3', kid3), 'end')
 			.add(rollInTl('#kid4', kid4), 'end')
 			.add(spinInTl('#enter'))
+			.add(popInTl('#hearts'), '-=1')
 			.add(popInTl('#txt'))
-			// .seek('frame2')
+			.fromTo('#burst-enter', {scale:0},{ scale: 1, transformOrigin:'0% 0%', ease:'back.out(1.2)'})
+			.add(popInOutTl('#burst-logo', 'bottom right'))
+			.add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
+			.add(popInOutTl('#hearts'), '+=3')
+			// .seek('end')
 			// tl.pause(.6);
 	}
 
@@ -77,12 +84,14 @@
 		tl
 			.fromTo('#wave_tab', { y:'100%'},{y:0, duration:.5})
 			// .fromTo('#wave_tab', { x:'-50%', y:'100%'},{y:0})
-			.fromTo('#logo', { scale:0, x:0, y:'50%' }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#logo-wrapper', { scale:0, x:0, y:'50%' }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#burst-logo', {scale:0},{ scale: 1, transformOrigin:'bottom right', ease:'back.out(1.2)'})
 			.add('frame2','+=1')
-			.to('#logo', { scale: 1, y:0, duration: 1}, 'frame2')
-			.to('#wave_tab', {  x:'-50%', y:'52%', duration: 1}, 'frame2')
+			.to('#logo-wrapper', { scale: 1, y:0, duration: 1}, 'frame2')
+			.to('#wave_tab', {  x:'-50%', y:'52%', duration: 2}, 'frame2')
 			.add(popInTl('#book'), '-=.5')
 			.add('end')
+			.add(popInTl('#hearts'), 'end')
 			.add(rollInTl('#kid1', kid1), 'end')
 			.add(rollInTl('#kid2', kid2), 'end')
 			.add(rollInTl('#kid3', kid3), 'end')
@@ -90,6 +99,10 @@
 			.add(spinInTl('#enter'))
 			.add(popInTl('#txt'))
 			// .fromTo('#txt', {scale:0},{ scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#burst-enter', {scale:0},{ scale: 1, transformOrigin:'0% 0%', ease:'back.out(1.2)'})
+			.add(popInOutTl('#burst-logo', 'bottom right'))
+			.add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
+			.add(popInOutTl('#hearts'), '+=3')
 			// .seek('end')
 			// tl.pause(.6);
 	}
@@ -104,7 +117,9 @@
 
 		tl
 			.fromTo('#wave_m', { y:'100%'},{y:0})
-			.fromTo('#logo', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#logo-wrapper', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#burst-logo', {scale:0},{ scale: 1, transformOrigin:'bottom right', ease:'back.out(1.2)'})
+			.add(popInTl('#hearts'))
 			.add('frame2','+=.1')
 			.to('#wave_m', {  x:'-50%', y:'45%', duration: 1}, 'frame2')
 			// .fromTo('#book', { scale:0, x:0, y:0 }, { scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'}, '-=.5')
@@ -114,29 +129,39 @@
 			.add(rollInTl('#kid2', kid2), 'end')
 			.add(rollInTl('#kid4', kid4), 'end')
 			.fromTo('#enter', { scale:0, y:0, rotation:180 }, { rotation:-5, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)', duration:0.8})
-			.fromTo('#logo-wrapper', {y:0}, { y:'-10%', duration: 1})
+			.fromTo('#logo-wrapper-container', {y:0}, { y:'-10%', duration: 1})
 			.add(popInTl('#txt'))
 			// .fromTo('#txt', {scale:0},{ scale:1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#burst-enter', {scale:0},{ scale: 1, transformOrigin:'0% 0%', ease:'back.out(1.2)'})
+			.add(popInOutTl('#burst-logo', 'bottom right'))
+			.add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
+			.add(popInOutTl('#hearts'), '+=3')
 			// .seek('end')
+
 			// tl.pause(.6);
 	}
-	function rollInTl(elId, kid){
+
+	function popInOutTl(_id, _origin='50% 50%', _repeat=-1) {
+		let _delay = _repeat >= 0 ? 0 : 10; // Do not add delay if repeat # is passed in.
+		return gsap.timeline({defaults:{duration:0.5}, repeat:_repeat, repeatDelay:_delay})
+			.to(_id, { scale: 0, transformOrigin:_origin, ease:'back.in(1.2)', yoyo:true, repeat:1})
+	}
+	function rollInTl(_id, kid){
 		return gsap.timeline()
-			.fromTo(elId, { x:0, y:'25%', rotation:kid.startRotation, scale:.2}, 
+			.fromTo(_id, { x:0, y:'25%', rotation:kid.startRotation, scale:.2}, 
 				{ duration:kid.speed, display:'block', x:kid.x ,y:kid.y, rotation:0, scale:kid.scale, transformOrigin:'50% 50%', ease:'power3.inout'});
 	}
-
-	function popInTl(elId, speed=0.5){
+	function popInTl(_id, speed=0.5){
 		return gsap.timeline()
-			.fromTo(elId, { scale:0, y:0 }, { duration:speed, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'});
+			.fromTo(_id, { scale:0, y:0 }, { duration:speed, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'});
 	}
-	function spinInTl(elId, speed=0.8){
+	function spinInTl(_id, speed=0.8){
 		return gsap.timeline()
-			.fromTo(elId, { scale:0, rotation:180 }, { duration:speed, rotation:0, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'});
+			.fromTo(_id, { scale:0, rotation:180 }, { duration:speed, rotation:0, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.3)'});
 	}
 
-	function getCenterX(elId){
-		return Math.round(windowWidth / 2 - (gsap.getProperty(elId, 'width') / 2));
+	function getCenterX(_id){
+		return Math.round(windowWidth / 2 - (gsap.getProperty(_id, 'width') / 2));
 		// cl('	getCenterX '+x);
 		// return x;
 	}

@@ -42,6 +42,10 @@ section .hero .wrapper {
   margin: 0 auto;
 }
 
+section .hero .ornament {
+  position: absolute;
+}
+
 section .hero #bubble-wrapper {
   position: absolute;
   width: 275px;
@@ -70,7 +74,7 @@ section .hero #bubble-wrapper img#enter {
   transform: translateX(-50%);
 }
 
-section .hero #logo-wrapper {
+section .hero #logo-container {
   position: relative;
   height: 100%;
   /* p#txt::before {
@@ -81,7 +85,17 @@ section .hero #logo-wrapper {
   } */
 }
 
-section .hero #logo-wrapper p#txt {
+section .hero #logo-container #logo-wrapper img#logo {
+  width: 100%;
+}
+
+section .hero #logo-container #logo-wrapper img#burst-logo {
+  width: 8%;
+  left: -8%;
+  top: 35%;
+}
+
+section .hero #logo-container p#txt {
   color: white;
   text-align: center;
   max-width: 80%;
@@ -110,12 +124,25 @@ section .hero #logo-wrapper p#txt {
     top: -12%;
   }
 
-  section .hero #logo-wrapper img#logo {
+  section .hero #bubble-wrapper img#burst-enter {
+    width: 41px;
+    left: 90%;
+    top: -14px;
+    transform: rotate(-71deg);
+  }
+
+  section .hero #logo-container #logo-wrapper {
     width: 383px;
     margin: 0;
   }
 
-  section .hero #logo-wrapper p#txt {
+  section .hero #logo-container #logo-wrapper img#hearts {
+    width: 12%;
+    left: 330%;
+    top: 69%;
+  }
+
+  section .hero #logo-container p#txt {
     font-size: 26px;
     position: absolute;
     max-width: 25rem;
@@ -150,12 +177,25 @@ section .hero #logo-wrapper p#txt {
     top: -8%;
   }
 
-  section .hero #logo-wrapper img#logo {
+  section .hero #bubble-wrapper img#burst-enter {
+    width: 37px;
+    left: 84%;
+    top: -2%;
+    transform: rotate(-64deg);
+  }
+
+  section .hero #logo-container #logo-wrapper {
     width: 400px;
     margin: 1.5rem auto 1rem;
   }
 
-  section .hero #logo-wrapper p#txt {
+  section .hero #logo-container #logo-wrapper img#hearts {
+    width: 12%;
+    left: 129%;
+    top: 13%;
+  }
+
+  section .hero #logo-container p#txt {
     font-size: clamp(24px, 3vw, 28px);
   }
 }
@@ -179,12 +219,25 @@ section .hero #logo-wrapper p#txt {
     top: -12%;
   }
 
-  section .hero #logo-wrapper img#logo {
+  section .hero #bubble-wrapper img#burst-enter {
+    width: 37px;
+    left: 93%;
+    top: -9%;
+    transform: rotate(-64deg);
+  }
+
+  section .hero #logo-container #logo-wrapper {
     width: 75%;
     margin: 30% auto 10%;
   }
 
-  section .hero #logo-wrapper p#txt {
+  section .hero #logo-container #logo-wrapper img#hearts {
+    width: 8%;
+    left: 100%;
+    top: -35%;
+  }
+
+  section .hero #logo-container p#txt {
     font-size: clamp(26px, 6vw, 35px);
   }
 }

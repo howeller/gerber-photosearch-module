@@ -50,7 +50,9 @@ section {
 			font-size: 0;
 			margin: 0 auto;
 		}
-
+		.ornament {
+			position: absolute;
+		}
 		#bubble-wrapper {
 			// position: absolute;
 			// border: 1px dashed teal;
@@ -89,7 +91,6 @@ section {
 				@include media("<=tablet") {
 					clip-path:circle(43% at 50% 53%);
 				}
-
 			}
 			img#book {
 				width: 100%;
@@ -113,35 +114,78 @@ section {
 					top: -12%;
 				}
 			}
+			img#burst-enter {
+				// transform-origin:0px 0px 0px;
+
+				@include media(">desktop") {
+					width: 41px;
+					left: 90%;
+					top: -14px;
+					transform: rotate(-71deg);
+				}
+				@include media("<=tablet") {
+					width: 37px;
+					left: 84%;
+					top: -2%;
+					transform: rotate(-64deg);
+				}
+				@include media("<=phone") {
+					width: 37px;
+					left: 93%;
+					top: -9%;
+					transform: rotate(-64deg);
+				}
+			}
 		}
 
-		#logo-wrapper {
+		#logo-container {
 			position: relative;
 			height: 100%;
 
-			@include media(">desktop") {
-			}
-			@include media("<=tablet") {
-			}
-			@include media("<=phone") {
-			}
-
-			img#logo {
+			// @include media(">desktop") {}
+			// @include media("<=tablet") {}
+			// @include media("<=phone") {}
+			#logo-wrapper {
+				// border: 1px dashed teal;
 
 				@include media(">desktop") {
 					width: 383px;
 					margin: 0;
 				}
-
 				@include media("<=tablet") {
 					width: 400px;
 					margin: 1.5rem auto 1rem;
 					// margin-top: 2rem;
 				}
-
 				@include media("<=phone") {
 					width: 75%;
 					margin: 30% auto 10%;
+				}
+
+				img#logo {
+					width: 100%;
+				}
+				img#burst-logo{
+					width: 8%;
+					left: -8%;
+					top: 35%;
+				}
+				img#hearts {
+					@include media(">desktop") {
+						width: 12%;
+						left: 330%;
+						top: 69%;
+					}
+					@include media("<=tablet") {
+						width: 12%;
+						left: 129%;
+						top: 13%;
+					}
+					@include media("<=phone") {
+						width: 8%;
+						left: 100%;
+						top: -35%;
+					}
 				}
 			}
 
