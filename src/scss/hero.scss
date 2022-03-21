@@ -14,17 +14,18 @@ section {
 		position: relative;
 		overflow: hidden;
 		visibility: hidden;
+		border: 1px black solid;
 
 		@include media(">desktop") {
-			border: 5px red solid;
+			// border: 5px red solid;
 			min-height: 400px;
 		}
 		@include media("<=tablet") {
-			border: 5px white solid;
+			// border: 5px white solid;
 			min-height: 650px;
 		}
 		@include media("<=phone") {
-			border: 5px blue solid;
+			// border: 5px blue solid;
 			min-height: 100vh;
 		}
 
@@ -52,8 +53,7 @@ section {
 
 		#bubble-wrapper {
 			// position: absolute;
-			border: 2px dashed teal;
-
+			// border: 1px dashed teal;
 			position: absolute;
 			width: 275px;
 
@@ -73,8 +73,27 @@ section {
 				// width: 48%;// 380px;
 				// bottom: 14%;
 			}
+			.kids {
+				clip-path: circle();
+				position: absolute;
+				display: none;
+				width: 60%;//200px;
+
+				// @include media(">desktop") { }
+				// @include media("<=tablet") { }
+				// @include media("<=phone") { }
+			}
+			img#kid2 {
+				clip-path:circle(43% at 50% 44%);
+
+				@include media("<=tablet") {
+					clip-path:circle(43% at 50% 53%);
+				}
+
+			}
 			img#book {
 				width: 100%;
+				// position: absolute;
 			}
 			img#enter {
 				position: absolute;
@@ -108,7 +127,7 @@ section {
 			}
 
 			img#logo {
-				
+
 				@include media(">desktop") {
 					width: 383px;
 					margin: 0;
@@ -116,7 +135,7 @@ section {
 
 				@include media("<=tablet") {
 					width: 400px;
-					margin: 2rem auto 1rem;
+					margin: 1.5rem auto 1rem;
 					// margin-top: 2rem;
 				}
 

@@ -26,6 +26,7 @@ section .hero {
   position: relative;
   overflow: hidden;
   visibility: hidden;
+  border: 1px black solid;
 }
 
 section .hero img.wave {
@@ -42,9 +43,21 @@ section .hero .wrapper {
 }
 
 section .hero #bubble-wrapper {
-  border: 2px dashed teal;
   position: absolute;
   width: 275px;
+}
+
+section .hero #bubble-wrapper .kids {
+  -webkit-clip-path: circle();
+  clip-path: circle();
+  position: absolute;
+  display: none;
+  width: 60%;
+}
+
+section .hero #bubble-wrapper img#kid2 {
+  -webkit-clip-path: circle(43% at 50% 44%);
+  clip-path: circle(43% at 50% 44%);
 }
 
 section .hero #bubble-wrapper img#book {
@@ -80,7 +93,6 @@ section .hero #logo-wrapper p#txt {
 
 @media (min-width: 1026px) {
   section .hero {
-    border: 5px red solid;
     min-height: 400px;
   }
 
@@ -114,7 +126,6 @@ section .hero #logo-wrapper p#txt {
 
 @media (max-width: 1024px) {
   section .hero {
-    border: 5px white solid;
     min-height: 650px;
   }
 
@@ -129,6 +140,11 @@ section .hero #logo-wrapper p#txt {
     transform: translateX(-50%);
   }
 
+  section .hero #bubble-wrapper img#kid2 {
+    -webkit-clip-path: circle(43% at 50% 53%);
+    clip-path: circle(43% at 50% 53%);
+  }
+
   section .hero #bubble-wrapper img#enter {
     width: 75%;
     top: -8%;
@@ -136,7 +152,7 @@ section .hero #logo-wrapper p#txt {
 
   section .hero #logo-wrapper img#logo {
     width: 400px;
-    margin: 2rem auto 1rem;
+    margin: 1.5rem auto 1rem;
   }
 
   section .hero #logo-wrapper p#txt {
@@ -146,7 +162,6 @@ section .hero #logo-wrapper p#txt {
 
 @media (max-width: 780px) {
   section .hero {
-    border: 5px blue solid;
     min-height: 100vh;
   }
 

@@ -22,7 +22,7 @@ var objData = {
 							"Mobile:780x1438,"+
 							"Tablet Landscape:1024x650,"+
 							// "Tablet Portrait:720x1024,"+
-							"Desktop 18.5:1440x400,"+
+							"Desktop:1440x400,"+
 							// "Apple iPad Pro:512x683,"+
 							// "Apple iPhone 11 Pro:338x731," +
 							// "Apple iPhone 8 Plus:365x648," +
@@ -30,7 +30,7 @@ var objData = {
 							// "Apple iPhone SE:314x559," +
 							// "Google Pixel:335x595," +
 							// "Samsung Galaxy 8:324x666," +
-							"fullscreen" + 
+							// "fullscreen" + 
 						"]"
 					}
 				]
