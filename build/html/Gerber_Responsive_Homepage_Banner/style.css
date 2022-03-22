@@ -16,6 +16,10 @@ section * {
   box-sizing: border-box;
 }
 
+svg {
+  overflow: visible;
+}
+
 section {
   height: 100vh;
   max-width: 1440px;
@@ -68,15 +72,11 @@ section .hero #bubble-wrapper img#book {
   width: 100%;
 }
 
-section .hero #bubble-wrapper img#enter {
+section .hero #bubble-wrapper #enter {
   position: absolute;
-}
-
-section .hero #bubble-wrapper img#arrow-enter {
-  width: 25%;
-  left: -41%;
-  top: 5%;
-  transform: rotate(5deg);
+  width: 116%;
+  top: -13%;
+  left: -25%;
 }
 
 section .hero #logo-container {
@@ -147,18 +147,6 @@ section .hero #logo-container p#txt {
     width: 50%;
     left: 210%;
     top: 53%;
-  }
-
-  section .hero #bubble-wrapper img#enter {
-    width: 90%;
-    top: -12%;
-  }
-
-  section .hero #bubble-wrapper img#burst-enter {
-    width: 41px;
-    left: 82%;
-    top: -25px;
-    transform: rotate(-71deg);
   }
 
   section .hero #logo-container #logo-wrapper {
@@ -237,22 +225,6 @@ section .hero #logo-container p#txt {
     top: 4%;
   }
 
-  section .hero #bubble-wrapper img#enter {
-    width: 75%;
-    top: -8%;
-  }
-
-  section .hero #bubble-wrapper img#arrow-enter {
-    left: -28%;
-  }
-
-  section .hero #bubble-wrapper img#burst-enter {
-    width: 37px;
-    left: 84%;
-    top: -2%;
-    transform: rotate(-64deg);
-  }
-
   section .hero #logo-container #logo-wrapper {
     width: 40%;
     margin: 1.5rem auto 1rem;
@@ -313,22 +285,9 @@ section .hero #logo-container p#txt {
     top: 95%;
   }
 
-  section .hero #bubble-wrapper img#enter {
-    width: 80%;
-    top: -12%;
-  }
-
-  section .hero #bubble-wrapper img#burst-enter {
-    width: 37px;
-    left: 85%;
-    top: -9%;
-    transform: rotate(-64deg);
-  }
-
   section .hero #logo-container #logo-wrapper {
     width: 75%;
-    margin: 30% auto;
-    margin-bottom: clamp(10%, 7vh, 30%);
+    margin: clamp(10%, 7vh, 30%) auto;
   }
 
   section .hero #logo-container #logo-wrapper img#stars {

@@ -83,7 +83,6 @@ section {
 				position: absolute;
 				display: none;
 				width: 60%;//200px;
-
 			}
 			img#kid1 {
 				@include media(">=desktop") {
@@ -155,62 +154,63 @@ section {
 				width: 100%;
 				// position: absolute;
 			}
-			img#enter {
+			#enter {
 				position: absolute;
+				width: 116%;
+				top: -13%;
+				left: -25%;
 				// left: 45%;
 				// transform:translateX(-50%);
 
-				@include media(">=desktop") {
-					width: 90%;
-					top: -12%;
-				}
-				@include media("<=tablet") {
-					width: 75%;
-					top: -8%;
-				}
-				@include media("<=phone") {
-					width:  80%;
-					top: -12%;
-				}
+				// @include media(">=desktop") {
+				// 	width: 116%;
+				// 	top: -13%;
+				// 	left: -25%;
+				// }
+				// @include media("<=tablet") {
+				// 	width: 116%;
+				// 	top: -13%;
+				// 	left: -25%;
+				// 	// width: 75%;
+				// 	// top: -8%;
+				// }
+				// @include media("<=phone") {
+				// 	width: 116%;
+				// 	top: -13%;
+				// 	left: -25%;
+				// }
 			}
-			img#arrow-enter {
-				width: 25%;
-				left: -41%;
-				top: 5%;
-				transform: rotate(5deg);
-				@include media(">=desktop") {
-
-				}
-				@include media("<=tablet") {
-				left: -28%;
-
-				}
-				@include media("<=phone") {
-
-				}
-			}
-			img#burst-enter {
-				// transform-origin:0px 0px 0px;
-
-				@include media(">=desktop") {
-					width: 41px;
-					left: 82%;
-					top: -25px;
-					transform: rotate(-71deg);
-				}
-				@include media("<=tablet") {
-					width: 37px;
-					left: 84%;
-					top: -2%;
-					transform: rotate(-64deg);
-				}
-				@include media("<=phone") {
-					width: 37px;
-					left: 85%;
-					top: -9%;
-					transform: rotate(-64deg);
-				}
-			}
+			// #arrow-enter {
+				// width: 25%;
+				// left: -41%;
+				// top: 5%;
+				// transform: rotate(5deg);
+				// @include media(">=desktop") { }
+				// @include media("<=tablet") {
+				// 	left: -28%;
+				// }
+				// @include media("<=phone") { }
+			// }
+			// #burst-enter {
+				// @include media(">=desktop") {
+				// 	width: 41px;
+				// 	left: 82%;
+				// 	top: -25px;
+				// 	transform: rotate(-71deg);
+				// }
+				// @include media("<=tablet") {
+				// 	width: 37px;
+				// 	left: 84%;
+				// 	top: -2%;
+				// 	transform: rotate(-64deg);
+				// }
+				// @include media("<=phone") {
+				// 	width: 37px;
+				// 	left: 85%;
+				// 	top: -9%;
+				// 	transform: rotate(-64deg);
+				// }
+			// }
 		}
 
 		#logo-container {
@@ -233,8 +233,9 @@ section {
 				}
 				@include media("<=phone") {
 					width: 75%;
-					margin: 30% auto;
-					margin-bottom: clamp(10%, 7vh, 30%);
+					margin: clamp(10%, 7vh, 30%) auto;
+					// margin-top: clamp(10%, 7vh, 30%);
+					// margin-bottom: clamp(10%, 7vh, 30%);
 				}
 
 				img#logo {

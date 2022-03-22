@@ -69,17 +69,17 @@
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end')
 			// .fromTo('#enter', { scale:0, x:0, y:0, rotation:180 }, { x:-20, rotation:-5, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.2)', duration:0.8})
-			.add(spinInTl('#enter',{x:-20, rotation:-5, speed:0.8}))
-			.add(popInTl('#arrow-enter','bottom left'),'-=0.5')
-			.add(popInTl('#burst-enter', '0% 0%'),'-=0.5')
+			.add(enterBubInTl({x:0, rotation:-5}))
+			// .add(popInTl('#arrow-enter','bottom left'),'-=0.5')
+			// .add(popInTl('#burst-enter', '0% 0%'),'-=0.5')
 			// .fromTo('#arrow-enter', {scale:0},{ scale: 1, transformOrigin:'bottom left', ease:'back.out(1.2)'})
 			.add(popInTl('#hearts', 'bottom left'), '-=1')
 			// .fromTo('#hearts', {scale:0},{ scale: 1, transformOrigin:'bottom left', ease:'back.out(1.2)'}, '-=1')
 			.add(popInTl('#txt'))
 			// .fromTo('#burst-enter', {scale:0},{ scale: 1, transformOrigin:'0% 0%', ease:'back.out(1.2)'})
 			.add(popInOutTl('#burst-logo', 'bottom right'))
-			.add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
-			.add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
+			// .add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
+			// .add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
 			.add(popInOutTl('#hearts','bottom left'), '+=3')
 			.add(popInOutTl('#heart'), '+=.5')
 			// .seek('end')
@@ -116,13 +116,13 @@
 			// .add(rollInTl('#kid4', kid4), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end')
-			.add(spinInTl('#enter'))
+			.add(enterBubInTl())
 			.add(popInTl('#txt'))
-			.add(popInTl('#arrow-enter','bottom left'),'-=0.5')
-			.add(popInTl('#burst-enter', '0% 0%'),'-=0.5')
+			// .add(popInTl('#arrow-enter','bottom left'),'-=0.5')
+			// .add(popInTl('#burst-enter', '50% 50%'),'-=0.5')
 			.add(popInOutTl('#burst-logo', 'bottom right'))
-			.add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
-			.add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
+			// .add(popInOutTl('#burst-enter', '50% 50%'), '+=3')
+			// .add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
 			.add(popInOutTl('#hearts'), '+=3')
 			.add(popInOutTl('#heart'), '+=1')
 			.add(popInOutTl('#stars'), '+=1')
@@ -132,9 +132,6 @@
 
 	function animateMobile() {
 		cl('animateMobile!');
-		// let kid2 = {x: -200, y: 200, scale: .65, startRotation: 360, speed: 0.5 },
-		// 		kid1 = {x: 380, y: -6, scale: .5, startRotation: -360, speed: 0.5 },
-		// 		kid4 = {x: 275, y: 330, scale: .85, startRotation: -360, speed: 0.5 };
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 
@@ -151,20 +148,15 @@
 			.add(kidRollInTl('#kid1', 0.5, -360), 'end')
 			.add(kidRollInTl('#kid2', 0.5, 360), 'end')
 			.add(kidRollInTl('#kid4', 0.5, -360), 'end')
-			// .add(rollInTl('#kid1', kid1), 'end')
-			// .add(rollInTl('#kid2', kid2), 'end')
-			// .add(rollInTl('#kid4', kid4), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end')
-			.add(spinInTl('#enter'))
-			.add(popInTl('#arrow-enter','bottom left'),'-=0.5')
-			.add(popInTl('#burst-enter', '0% 0%'),'-=0.5')
-			.fromTo('#logo-container', {y:0}, { y:'-10%', duration: 1},'-=.3')
-			// .fromTo('#logo-container', {y:0}, { y:'-27%', duration: 1})
+			.add(enterBubInTl())
+			// .add(popInTl('#arrow-enter','bottom left'),'-=0.5')
+			// .add(popInTl('#burst-enter', '0% 50%'),'-=0.5')
 			.add(popInTl('#txt'), '-=.5')
 			.add(popInOutTl('#burst-logo', 'bottom right'))
-			.add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
-			.add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
+			// .add(popInOutTl('#burst-enter', '50% 0%'), '+=3')
+			// .add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
 			.add(popInOutTl('#hearts'), '+=2')
 			.add(popInOutTl('#heart'), '+=1')
 			.add(popInOutTl('#stars'), '+=1')
@@ -187,9 +179,14 @@
 		return gsap.timeline()
 			.fromTo(_id, { scale:0, y:0 }, { duration:0.5, scale:1, transformOrigin:_origin, ease:'back.out(1.2)'});
 	}
-	function spinInTl(_id, _prop={x:0, rotation:-5}){
-		return gsap.timeline()
-			.fromTo(_id, { scale:0, x:0, y:0, rotation:180 }, { x:_prop.x, rotation:_prop.rotation, scale:1, transformOrigin:'50% 50%', ease:'back.out(1.2)', duration:0.8})
+	function enterBubInTl( _prop={x:0, rotation:-5}){
+		return gsap.timeline({ defaults:{ ease:'back.out(1.2)', transformOrigin:'50% 50%' }})
+			.set('#enter',{ x:_prop.x, rotation:_prop.rotation, transformOrigin:'50% 50%',})
+			.fromTo('#enter-back', { scale:0, y:0 }, { scale:1, duration:0.5})
+			.fromTo('#enter-txt', { scale:0, y:0 }, { scale:1, duration:0.4}, '-=.3' )
+			.fromTo('#arrow-enter', { scale:0, y:'50%', x:'-50%' }, { scale:1, duration:0.4, transformOrigin:'0% 100%'}, '-=.3' )
+			.fromTo('#burst-enter .cls-3', { scale:0, y:0, x:0 }, { x:0, scale:1, duration:0.2, stagger:.1, ease:'back.out(1.5)', transformOrigin:'0% center'}, '-=0.5')
+			// .add(popInTl('#burst-enter', '0% 50%'),'-=0.5')
 	}
 	function kidRollInTl(_id, _speed, _startRotation ) {
 		let props = getKidTweenProps(_id);
