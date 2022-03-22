@@ -52,7 +52,7 @@ function images(){
 gulp.task('clean', () => { return del(dir.dist+'**/*'); });
 gulp.task('build', build);
 gulp.task('sass', buildStyles);
-gulp.task('images', gulp.series(images, 'sass', 'build'));
+gulp.task('images', gulp.series('clean', images, 'sass', 'build'));
 gulp.task('default', gulp.series('sass', 'build'));
 // gulp.task('watch', function(callback) { return gulp.watch(dir.src+'**/**', gulp.series('default')); callback(); });
 gulp.task('watch', () => { return gulp.watch(['src/*/**'], gulp.series('default'))});

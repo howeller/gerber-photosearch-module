@@ -37,7 +37,7 @@ section .hero img.wave {
   position: absolute;
   display: none;
   bottom: 0;
-  width: 200%;
+  left: 0;
 }
 
 section .hero .wrapper {
@@ -117,6 +117,15 @@ section .hero #logo-container p#txt {
 
   section .hero img#wave_dt {
     display: block;
+    width: 325%;
+  }
+
+  section .hero img#wave_tab {
+    display: none;
+  }
+
+  section .hero img#wave_m {
+    display: none;
   }
 
   section .hero #bubble-wrapper {
@@ -187,8 +196,17 @@ section .hero #logo-container p#txt {
     min-height: 650px;
   }
 
+  section .hero img#wave_dt {
+    display: none;
+  }
+
   section .hero img#wave_tab {
     display: block;
+    width: 325%;
+  }
+
+  section .hero img#wave_m {
+    display: none;
   }
 
   section .hero #bubble-wrapper {
@@ -210,7 +228,7 @@ section .hero #logo-container p#txt {
     clip-path: circle(43% at 50% 53%);
     width: 49%;
     left: -64%;
-    top: 44%;
+    top: 38%;
   }
 
   section .hero #bubble-wrapper img#kid3 {
@@ -258,8 +276,17 @@ section .hero #logo-container p#txt {
     min-height: 100vh;
   }
 
+  section .hero img#wave_dt {
+    display: none;
+  }
+
+  section .hero img#wave_tab {
+    display: none;
+  }
+
   section .hero img#wave_m {
     display: block;
+    width: 260%;
   }
 
   section .hero #bubble-wrapper {
@@ -270,7 +297,7 @@ section .hero #logo-container p#txt {
   section .hero #bubble-wrapper img#kid1 {
     width: 31%;
     left: 113%;
-    top: 13%;
+    top: 0%;
   }
 
   section .hero #bubble-wrapper img#kid2 {

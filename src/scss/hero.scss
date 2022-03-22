@@ -33,16 +33,32 @@ section {
 			position: absolute;
 			display: none;
 			bottom: 0;
-			width: 200%;
+			left: 0;
 		}
 		img#wave_dt {
-			@include media(">=desktop") {display: block; }
+			@include media(">=desktop") {
+				display: block;
+				width: 325%;
+			}
+			@include media("<=tablet") {display: none;}
+			@include media("<=phone") {display: none;}
 		}
 		img#wave_tab {
-			@include media("<=tablet") {display: block; }
+			@include media("<=tablet") {
+				display: block;
+				width: 325%;
+			}
+			@include media(">=desktop") {display: none;}
+			@include media("<=phone") {display: none;}
 		}
 		img#wave_m {
-			@include media("<=phone") {display: block; }
+			@include media("<=phone") {
+				display: block;
+				width: 260%;
+				// bottom: -20%;
+			}
+			@include media(">=desktop") {display: none;}
+			@include media("<=tablet") {display: none;}
 		}
 
 		.wrapper {
@@ -98,7 +114,7 @@ section {
 				@include media("<=phone") {
 					width: 31%;
 					left: 113%;
-					top: 13%;
+					top: 0%;//13%;
 				}
 			}
 			img#kid2 {
@@ -113,7 +129,7 @@ section {
 					clip-path:circle(43% at 50% 53%);
 					width: 49%;
 					left: -64%;
-					top: 44%;
+					top: 38%;//44%;
 				}
 				@include media("<=phone") {
 					width: 33%;
@@ -217,9 +233,6 @@ section {
 			position: relative;
 			height: 100%;
 
-			// @include media(">=desktop") {}
-			// @include media("<=tablet") {}
-			// @include media("<=phone") {}
 			#logo-wrapper {
 				// border: 1px dashed teal;
 

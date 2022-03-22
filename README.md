@@ -14,5 +14,6 @@
 Task Name    | What it Does
 -------------|-----------
 `build` | Runs build.
-`images` | Runs build and copies all images from src/images.
+`clean` | Deletes all files inside  `build/Gerber_Responsive_Homepage/` .
+`images` | Runs clean, & build tasks and then copies all images from `src/images`.
 `sass` | Compiles all SASS into CSS & autoprefixed.
