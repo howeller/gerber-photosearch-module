@@ -48,7 +48,7 @@ section .hero .ornament {
 
 section .hero #bubble-wrapper {
   position: absolute;
-  width: 275px;
+  width: 26%;
 }
 
 section .hero #bubble-wrapper .kids {
@@ -70,8 +70,13 @@ section .hero #bubble-wrapper img#book {
 
 section .hero #bubble-wrapper img#enter {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+}
+
+section .hero #bubble-wrapper img#arrow-enter {
+  width: 25%;
+  left: -41%;
+  top: 5%;
+  transform: rotate(5deg);
 }
 
 section .hero #logo-container {
@@ -105,7 +110,7 @@ section .hero #logo-container p#txt {
   font-style: normal;
 }
 
-@media (min-width: 1026px) {
+@media (min-width: 1025px) {
   section .hero {
     min-height: 400px;
   }
@@ -115,8 +120,33 @@ section .hero #logo-container p#txt {
   }
 
   section .hero #bubble-wrapper {
+    width: 19%;
     left: 46%;
-    top: 24%;
+    bottom: 8%;
+  }
+
+  section .hero #bubble-wrapper img#kid1 {
+    width: 25%;
+    left: -97%;
+    top: 78%;
+  }
+
+  section .hero #bubble-wrapper img#kid2 {
+    width: 50%;
+    left: -60%;
+    top: 55%;
+  }
+
+  section .hero #bubble-wrapper img#kid3 {
+    width: 24%;
+    left: 140%;
+    top: 56%;
+  }
+
+  section .hero #bubble-wrapper img#kid4 {
+    width: 50%;
+    left: 210%;
+    top: 53%;
   }
 
   section .hero #bubble-wrapper img#enter {
@@ -126,14 +156,27 @@ section .hero #logo-container p#txt {
 
   section .hero #bubble-wrapper img#burst-enter {
     width: 41px;
-    left: 90%;
-    top: -14px;
+    left: 82%;
+    top: -25px;
     transform: rotate(-71deg);
   }
 
   section .hero #logo-container #logo-wrapper {
-    width: 383px;
+    width: 30%;
     margin: 0;
+  }
+
+  section .hero #logo-container #logo-wrapper img#stars {
+    width: 7%;
+    left: 205%;
+    top: 56%;
+  }
+
+  section .hero #logo-container #logo-wrapper img#heart {
+    width: 12%;
+    transform: rotate(65deg);
+    left: 100%;
+    top: 11%;
   }
 
   section .hero #logo-container #logo-wrapper img#hearts {
@@ -143,9 +186,9 @@ section .hero #logo-container p#txt {
   }
 
   section .hero #logo-container p#txt {
-    font-size: 26px;
+    font-size: clamp(10px, 2vw, 26px);
     position: absolute;
-    max-width: 25rem;
+    max-width: 30%;
     right: 3%;
     top: 50px;
   }
@@ -161,20 +204,46 @@ section .hero #logo-container p#txt {
   }
 
   section .hero #bubble-wrapper {
+    width: 26%;
     margin: 0 auto;
     bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
   }
 
+  section .hero #bubble-wrapper img#kid1 {
+    width: 38%;
+    left: 194%;
+    top: 16%;
+  }
+
   section .hero #bubble-wrapper img#kid2 {
     -webkit-clip-path: circle(43% at 50% 53%);
     clip-path: circle(43% at 50% 53%);
+    width: 49%;
+    left: -64%;
+    top: 44%;
+  }
+
+  section .hero #bubble-wrapper img#kid3 {
+    width: 36%;
+    left: -130%;
+    top: 42%;
+  }
+
+  section .hero #bubble-wrapper img#kid4 {
+    width: 59%;
+    left: 117%;
+    top: 4%;
   }
 
   section .hero #bubble-wrapper img#enter {
     width: 75%;
     top: -8%;
+  }
+
+  section .hero #bubble-wrapper img#arrow-enter {
+    left: -28%;
   }
 
   section .hero #bubble-wrapper img#burst-enter {
@@ -185,8 +254,20 @@ section .hero #logo-container p#txt {
   }
 
   section .hero #logo-container #logo-wrapper {
-    width: 400px;
+    width: 40%;
     margin: 1.5rem auto 1rem;
+  }
+
+  section .hero #logo-container #logo-wrapper img#stars {
+    width: 9%;
+    left: 150%;
+    bottom: -72%;
+  }
+
+  section .hero #logo-container #logo-wrapper img#heart {
+    width: 12%;
+    left: -58%;
+    top: 11%;
   }
 
   section .hero #logo-container #logo-wrapper img#hearts {
@@ -214,30 +295,61 @@ section .hero #logo-container p#txt {
     bottom: clamp(2%, 14vh, 14%);
   }
 
+  section .hero #bubble-wrapper img#kid1 {
+    width: 31%;
+    left: 113%;
+    top: 13%;
+  }
+
+  section .hero #bubble-wrapper img#kid2 {
+    width: 33%;
+    left: -40%;
+    top: 71%;
+  }
+
+  section .hero #bubble-wrapper img#kid4 {
+    width: 50%;
+    left: 78%;
+    top: 95%;
+  }
+
   section .hero #bubble-wrapper img#enter {
-    width: 90%;
+    width: 80%;
     top: -12%;
   }
 
   section .hero #bubble-wrapper img#burst-enter {
     width: 37px;
-    left: 93%;
+    left: 85%;
     top: -9%;
     transform: rotate(-64deg);
   }
 
   section .hero #logo-container #logo-wrapper {
     width: 75%;
-    margin: 30% auto 10%;
+    margin: 30% auto;
+    margin-bottom: clamp(10%, 7vh, 30%);
+  }
+
+  section .hero #logo-container #logo-wrapper img#stars {
+    width: 10%;
+    left: 100%;
+    top: 100%;
+  }
+
+  section .hero #logo-container #logo-wrapper img#heart {
+    width: 10%;
+    left: -10%;
+    top: 100%;
   }
 
   section .hero #logo-container #logo-wrapper img#hearts {
     width: 8%;
     left: 100%;
-    top: -35%;
+    top: -11%;
   }
 
   section .hero #logo-container p#txt {
-    font-size: clamp(26px, 6vw, 35px);
+    font-size: clamp(13px, 4vw, 35px);
   }
 }
