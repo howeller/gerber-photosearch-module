@@ -47,7 +47,7 @@
 		tl
 			.add('start')
 			.fromTo('#wave_dt', { /*x:'-50%', */y:'100%', skewX:.01},{y:0},'start')
-			.fromTo('#logo-wrapper', { scale:0, x:getCenterX('#logo-wrapper'), y:'50px'}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
+			.fromTo('#logo-wrapper', { scale:0, x:getCenterX('#logo-wrapper'), y:'50px', skewX:.1}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
 			// .fromTo('#burst-logo', {scale:0},{ scale: 1, transformOrigin:'bottom right', ease:'back.out(1.2)'})
 			.to('#wave_dt', {  x:getWaveX('#wave_dt'), duration: 4, ease:'power2.inout'})
