@@ -327,6 +327,10 @@ section {
 					style: normal;
 				}
 
+				span {
+					display: inline;
+				}
+
 				@include media(">=desktop") {
 					font-size: clamp(10px, 2vw, $font-dt);
 					position: absolute;

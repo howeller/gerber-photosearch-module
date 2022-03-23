@@ -110,6 +110,10 @@ section .hero #logo-container p#txt {
   font-style: normal;
 }
 
+section .hero #logo-container p#txt span {
+  display: inline;
+}
+
 @media (min-width: 1025px) {
   section .hero {
     min-height: 400px;
