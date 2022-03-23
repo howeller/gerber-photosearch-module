@@ -52,7 +52,7 @@
 			.fromTo('#logo-wrapper', { scale:0, x:getCenterX('#logo-wrapper'), y:'50px', skewX:.1}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
 			// .fromTo('#burst-logo', {scale:0},{ scale: 1, transformOrigin:'bottom right', ease:'back.out(1.2)'})
-			.to('#wave_dt', {  x:getWaveX('#wave_dt'), duration: 4, ease:'power2.inout'})
+			.to('#wave_dt', {  x:getWaveX('#wave_dt'), duration: 4, ease:'power1.inOut'})
 			.to('#logo-wrapper', { scale: 1, x: '20%', duration: 4}, '-=4')
 			.add('frame2','-=1.5')
 			// .to('#wave_dt', { x:0, y:'55%', duration: 2}, 'frame2')
@@ -85,7 +85,7 @@
 			// .add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
 			.add(popInOutTl('#hearts','bottom left'), '+=3')
 			.add(popInOutTl('#heart'), '+=.5')
-			.seek('end')
+			// .seek('end')
 			// tl.pause(.6);
 	}
 
@@ -99,13 +99,14 @@
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 	
 		tl
-			.fromTo('#wave_tab', { y:'100%', skewX:.01},{y:0, duration:.5})
+			.add('start')
+			.fromTo('#wave_tab', { y:'100%', skewX:.01},{y:0, duration:.5},'start')
 			// .fromTo('#wave_tab', { x:'-50%', y:'100%'},{y:0})
-			.fromTo('#logo-wrapper', { scale:0, x:0, y:'50%' }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'})
+			.fromTo('#logo-wrapper', { scale:0, x:0, y:'50%' }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
 			.add('frame2','+=1')
-			.to('#logo-wrapper', { scale: 1, y:0, duration: 1}, 'frame2')
-			.to('#wave_tab', {  x:getWaveX('#wave_tab'), duration: 2.5, ease:'power2.inout'}, 'frame2')
+			.to('#wave_tab', {  x:getWaveX('#wave_tab'), duration: 4, ease:'power3.inOut'}, 'frame2-=0.5')
+			.to('#logo-wrapper', { scale: 1, y:0, duration: 2, ease:'power3.inOut'}, 'frame2')
 			// .to('#wave_tab', {  x:'-50%', y:'52%', duration: 2}, 'frame2')
 			.add(popInTl('#book'), '-=1.5')
 			.add('end','-=1')
@@ -130,7 +131,7 @@
 			.add(popInOutTl('#hearts'), '+=3')
 			.add(popInOutTl('#heart'), '+=1')
 			.add(popInOutTl('#stars'), '+=1')
-			.seek('end')
+			// .seek('end')
 			// tl.pause(.6);
 	}
 
@@ -146,9 +147,9 @@
 			.add(popInTl('#hearts'), '-=.3')
 			.add(popInTl('#heart'), '-=.3')
 			.add('frame2','-=1')
-			.to('#wave_m', {  x:getWaveX('#wave_m'), duration: 2, ease:'power2.inout'}, 'frame2')
+			.to('#wave_m', {  x:getWaveX('#wave_m'), duration: 4, ease:'power3.inOut'}, 'frame2')
 			// .to('#wave_m', {  x:'-50%', y:'45%', duration: 2}, 'frame2')
-			.add(popInTl('#book'),'frame2+=1')
+			.add(popInTl('#book'),'frame2+=2.5')
 			.add('end','-=.5')
 			.add(kidRollInTl('#kid1', 0.5, -360), 'end')
 			.add(kidRollInTl('#kid2', 0.5, 360), 'end')
@@ -186,7 +187,7 @@
 /*	function rollInTl(_id, kid){
 		return gsap.timeline()
 			.fromTo(_id, { x:0, y:'25%', rotation:kid.startRotation, scale:.2}, 
-				{ duration:kid.speed, display:'block', x:kid.x ,y:kid.y, rotation:0, scale:kid.scale, transformOrigin:'50% 50%', ease:'power3.inout'});
+				{ duration:kid.speed, display:'block', x:kid.x ,y:kid.y, rotation:0, scale:kid.scale, transformOrigin:'50% 50%', ease:'power3.inOut'});
 	}*/
 	function popInTl(_id, _origin='50% 50%') {
 		return gsap.timeline()
@@ -196,7 +197,7 @@
 
 		return gsap.timeline()
 			.fromTo('#txt', { scale:0, y:0 }, { duration:1, scale:1, transformOrigin:'0% 50%', ease:'back.out(1.2)'})
-			.fromTo(txt.words, { alpha:0 }, {alpha:1, duration: 0.2, ease:'power1.out', stagger:0.1 },'-=1') //try "center" and "edges"
+			.fromTo(txt.words, { alpha:0 }, {alpha:1, duration: 0.2, ease:'none', stagger:0.1 },'-=1') //try "center" and "edges"
 			// .from(txt.words, { /*scale:.5,*/ autoAlpha:0, duration: 0.2, ease:'power1.out', stagger:{from:"start", each:0.1} },'-=1') //try "center" and "edges"
 	}
 
@@ -212,7 +213,7 @@
 	function kidRollInTl(_id, _speed, _startRotation ) {
 		let props = getKidTweenProps(_id);
 
-		return gsap.timeline({defaults:{duration:_speed, ease:'power3.inout'}})
+		return gsap.timeline({defaults:{duration:_speed, ease:'power3.inOut'}})
 			.fromTo(_id, { x:props.x, y:props.y, rotation:_startRotation, scale:.3}, { display:'block', x:0, y:0, rotation:0, scale:1, transformOrigin:'50% 50%'});
 	}
 
