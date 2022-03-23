@@ -1,6 +1,6 @@
 (function(window, document){
 
-	let tl, windowWidth;
+	let tl, txt, windowWidth;
 
 	const cl = txt => console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;');
 	const id = txt => document.getElementById(txt);
@@ -9,7 +9,9 @@
 	function init(e){
 		cl('init');
 		windowWidth = window.innerWidth;
+		gsap.registerPlugin(SplitText);//gsap.registerPlugin(TextPlugin);
 		gsap.set('.hero',{visibility:'visible'});
+		txt = new SplitText('#txt', {type:'words', /*wordsClass: "line-span",*/ reduceWhiteSpace:false});
 		startAnimation(windowWidth);
 	}
 
@@ -76,14 +78,14 @@
 			// .fromTo('#arrow-enter', {scale:0},{ scale: 1, transformOrigin:'bottom left', ease:'back.out(1.2)'})
 			.add(popInTl('#hearts', 'bottom left'), '-=1')
 			// .fromTo('#hearts', {scale:0},{ scale: 1, transformOrigin:'bottom left', ease:'back.out(1.2)'}, '-=1')
-			.add(popInTl('#txt'))
+			.add(txtInTl())// .add(popInTl('#txt'))
 			// .fromTo('#burst-enter', {scale:0},{ scale: 1, transformOrigin:'0% 0%', ease:'back.out(1.2)'})
 			.add(popInOutTl('#burst-logo', 'bottom right'))
 			// .add(popInOutTl('#burst-enter', '0% 0%'), '+=3')
 			// .add(popInOutTl('#arrow-enter', 'bottom left'), '+=.5')
 			.add(popInOutTl('#hearts','bottom left'), '+=3')
 			.add(popInOutTl('#heart'), '+=.5')
-			// .seek('end')
+			.seek('end')
 			// tl.pause(.6);
 	}
 
@@ -119,7 +121,7 @@
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end')
 			.add(enterBubInTl())
-			.add(popInTl('#txt'))
+			.add(txtInTl())// .add(popInTl('#txt'))
 			// .add(popInTl('#arrow-enter','bottom left'),'-=0.5')
 			// .add(popInTl('#burst-enter', '50% 50%'),'-=0.5')
 			.add(popInOutTl('#burst-logo', 'bottom right'))
@@ -128,7 +130,7 @@
 			.add(popInOutTl('#hearts'), '+=3')
 			.add(popInOutTl('#heart'), '+=1')
 			.add(popInOutTl('#stars'), '+=1')
-			// .seek('end')
+			.seek('end')
 			// tl.pause(.6);
 	}
 
@@ -153,7 +155,7 @@
 			.add(kidRollInTl('#kid4', 0.5, -360), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end')
-			.add(popInTl('#txt'),'-=0.5')
+			.add(txtInTl(), '-=0.5')// .add(popInTl('#txt'),'-=0.5')
 			.add(enterBubInTl())
 			// .add(popInTl('#arrow-enter','bottom left'),'-=0.5')
 			// .add(popInTl('#burst-enter', '0% 50%'),'-=0.5')
@@ -181,15 +183,23 @@
 		return gsap.timeline({defaults:{duration:0.5}, repeat:_repeat, repeatDelay:_delay})
 			.to(_id, { scale: 0, transformOrigin:_origin, ease:'back.in(1.2)', yoyo:true, repeat:1})
 	}
-	function rollInTl(_id, kid){
+/*	function rollInTl(_id, kid){
 		return gsap.timeline()
 			.fromTo(_id, { x:0, y:'25%', rotation:kid.startRotation, scale:.2}, 
 				{ duration:kid.speed, display:'block', x:kid.x ,y:kid.y, rotation:0, scale:kid.scale, transformOrigin:'50% 50%', ease:'power3.inout'});
-	}
+	}*/
 	function popInTl(_id, _origin='50% 50%') {
 		return gsap.timeline()
 			.fromTo(_id, { scale:0, y:0 }, { duration:0.5, scale:1, transformOrigin:_origin, ease:'back.out(1.2)'});
 	}
+	function txtInTl(){
+
+		return gsap.timeline()
+			.fromTo('#txt', { scale:0, y:0 }, { duration:1, scale:1, transformOrigin:'0% 50%', ease:'back.out(1.2)'})
+			.fromTo(txt.words, { alpha:0 }, {alpha:1, duration: 0.2, ease:'power1.out', stagger:0.1 },'-=1') //try "center" and "edges"
+			// .from(txt.words, { /*scale:.5,*/ autoAlpha:0, duration: 0.2, ease:'power1.out', stagger:{from:"start", each:0.1} },'-=1') //try "center" and "edges"
+	}
+
 	function enterBubInTl( _prop={x:0, rotation:-5}){
 		return gsap.timeline({ defaults:{ ease:'back.out(1.2)', transformOrigin:'50% 50%' }})
 			.set('#enter',{ x:_prop.x, rotation:_prop.rotation, transformOrigin:'50% 50%',})
