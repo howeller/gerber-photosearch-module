@@ -53,8 +53,8 @@
 			.add(popInTl('#book'), 'frame2')
 			.add('end', 'frame2+=0.75')
 			.add(kidRollInTl('#kid1', 1, 360), 'end')
-			.add(kidRollInTl('#kid2', 0.5, 360), 'end')
-			.add(kidRollInTl('#kid3', 0.5, -360), 'end')
+			.add(kidRollInTl('#kid2', 0.5, -360), 'end')
+			.add(kidRollInTl('#kid3', 0.5, 360), 'end')
 			.add(kidRollInTl('#kid4', 1, -360), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end+=.3')
@@ -171,7 +171,7 @@
 		let props = getKidTweenProps(_id);
 
 		return gsap.timeline({defaults:{duration:_speed, ease:'power3.inOut'}})
-			.fromTo(_id, { x:props.x, y:props.y, rotation:_startRotation, scale:.3}, { display:'block', x:0, y:0, rotation:0, scale:1, transformOrigin:'50% 50%'});
+			.fromTo(_id, { x:props.x, y:props.y, rotation:_startRotation, scale:0.1}, { display:'block', x:0, y:0, rotation:0, scale:1, transformOrigin:'50% 50%'});
 	}
 	function getKidTweenProps(_id) {
 		let _bubProp = gsap.getProperty('#bubble-wrapper'),
@@ -180,17 +180,18 @@
 			_bh = _bubProp('height')/2,
 			_kidX = _kidProp('left'),
 			_kidY = _kidProp('top'),
-			_distanceX = (_kidX > 0 ) ? (_kidX+_bw) * -1 : Math.abs(_kidX-_bw ), // Determine if X position is a + or - #.
-			_distanceY = (_bh-_kidY > 0 ) ? (_kidY)* -1 : Math.abs(_kidY+_bh );
+			_distanceX = (_kidX > 0 ) ? (_kidX+_bw) * -1 : Math.abs(_kidX-_bw*2 ), // Determine if X position is a + or - #.
+			_distanceY = (_bh-_kidY > 0 ) ? (_kidY) * -1 : Math.abs(_kidY+_bh );
 		// console.group(_id);
 
 		// // cl('? '+window.getComputedStyle(id('bubble-wrapper')).height);
-		// cl('bh '+_bh)// cl(' _kidX '+ _kidX);
+		// cl('bh '+_bh)
+		// cl(' _kidX '+ _kidX);
 		// cl(' _distanceX '+ _distanceX);
 		// cl(' _kidY '+ _kidY);
 		// cl(' _distanceY '+ _distanceY);
 
-		// // console.table(bubProp);
+		// console.table(bubProp);
 		// console.groupEnd();
 		return { x:_distanceX, y:_distanceY };
 	}

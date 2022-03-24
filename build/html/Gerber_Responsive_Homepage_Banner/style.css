@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 * {
   margin: 0;
   padding: 0;
@@ -23,6 +21,7 @@ svg {
 section {
   height: 100vh;
   max-width: 1440px;
+  margin: 0 auto;
 }
 
 section .hero {
@@ -82,12 +81,6 @@ section .hero #bubble-wrapper #enter {
 section .hero #logo-container {
   position: relative;
   height: 100%;
-  /* p#txt::before {
-  	@include media("<=phone") {
-  		content: 'Capture your little one’s&nbsp;silliest, smiliest side for their&nbsp;chance to be Gerber’s&nbsp;next\AChief&nbsp;Growing&nbsp;Officer!';
-  		white-space: pre-wrap;
-  	}
-  } */
 }
 
 section .hero #logo-container #logo-wrapper img#logo {
@@ -145,15 +138,15 @@ section .hero #logo-container p#txt span {
   }
 
   section .hero #bubble-wrapper img#kid2 {
-    width: 50%;
-    left: -60%;
-    top: 55%;
+    width: 27%;
+    left: 140%;
+    top: 56%;
   }
 
   section .hero #bubble-wrapper img#kid3 {
-    width: 24%;
-    left: 140%;
-    top: 56%;
+    width: 50%;
+    left: -60%;
+    top: 55%;
   }
 
   section .hero #bubble-wrapper img#kid4 {
