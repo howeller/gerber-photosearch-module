@@ -5,13 +5,10 @@
 	const cl = txt => console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;');
 	const id = txt => document.getElementById(txt);
 
-	// console.group('Gerber Hero');
 	function init(e){
 		cl('init');
 		windowWidth = window.innerWidth;
-		// gsap.registerPlugin(SplitText);
 		gsap.set('.hero',{visibility:'visible'});
-		// txt = new SplitText('#txt', {type:'words', /*wordsClass: "line-span",*/ reduceWhiteSpace:false});
 		startAnimation(windowWidth);
 	}
 
@@ -41,14 +38,15 @@
 		cl('animateDesktop!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
+		let _waveSp = 6.5;
 
 		tl
 			.add('start')
 			.fromTo('#wave_dt', { /*x:'-50%', */y:'100%', skewX:.01},{y:0},'start')
 			.fromTo('#logo-wrapper', { scale:0, x:getCenterX('#logo-wrapper'), y:'50px', skewX:.1}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
-			.to('#wave_dt', {  x:getWaveX('#wave_dt'), duration: 4, ease:'power1.inOut'})
-			.to('#logo-wrapper', { scale: 1, x: '20%', duration: 4}, '-=4')
+			.to('#wave_dt', {  x:getWaveX('#wave_dt'), duration: _waveSp, ease:'power2.inOut'})
+			.to('#logo-wrapper', { scale: 1, x: '20%', duration: _waveSp, ease:'power3.inOut'}, '-='+_waveSp)
 			.add('frame2','-=1.5')
 			.add(popInTl('#book'), 'frame2')
 			.add('end', 'frame2+=0.75')
@@ -72,17 +70,18 @@
 		cl('animateTablet!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
+		let _waveSp = 6.5;
 	
 		tl
 			.add('start')
 			.fromTo('#wave_tab', { y:'100%', skewX:.01},{y:0, duration:.5},'start')
 			// .fromTo('#wave_tab', { x:'-50%', y:'100%'},{y:0})
-			.fromTo('#logo-wrapper', { scale:0, x:0, y:'50%' }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
+			.fromTo('#logo-wrapper', { scale:0, x:0, y:'50%', skewX:.1 }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
 			.add('frame2','+=1')
-			.to('#wave_tab', {  x:getWaveX('#wave_tab'), duration: 4, ease:'power3.inOut'}, 'frame2-=0.5')
-			.to('#logo-wrapper', { scale: 1, y:0, duration: 2, ease:'power3.inOut'}, 'frame2')
-			.add(popInTl('#book'), '-=1.5')
+			.to('#wave_tab', {  x:getWaveX('#wave_tab'), duration: _waveSp, ease:'power2.inOut'}, 'frame2')
+			.to('#logo-wrapper', { scale: 1, y:0, duration: _waveSp/2, ease:'power3.inOut'}, 'frame2')
+			.add(popInTl('#book'), '-='+(_waveSp/3))
 			.add('end','-=1')
 			.add(popInTl('#hearts'), 'end')
 			.add(kidRollInTl('#kid1', 1, -360), 'end')
@@ -105,6 +104,7 @@
 		cl('animateMobile!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
+		let _waveSp = 6.5;
 
 		tl.add('start')
 			.fromTo('#wave_m', { y:'100%', skewX:.01},{y:0},'start')
@@ -113,22 +113,21 @@
 			.add(popInTl('#hearts'), '-=.3')
 			.add(popInTl('#heart'), '-=.3')
 			.add('frame2','-=1')
-			.to('#wave_m', {  x:getWaveX('#wave_m'), duration: 4, ease:'power3.inOut'}, 'frame2')
-			.add(popInTl('#book'),'frame2+=2.5')
-			.add('end','-=.5')
+			.to('#wave_m', {  x:getWaveX('#wave_m'), duration: _waveSp, ease:'power3.inOut'}, 'frame2')
+			.add(popInTl('#book'),'frame2+='+(_waveSp/2))
+			.add('end', 'frame2+='+(_waveSp-1.75))
 			.add(kidRollInTl('#kid1', 0.5, -360), 'end')
 			.add(kidRollInTl('#kid2', 0.5, 360), 'end')
 			.add(kidRollInTl('#kid4', 0.5, -360), 'end')
 			.add(popInTl('#heart'), 'end')
-			.add(popInTl('#stars'), 'end')
+			.add(popInTl('#stars'), 'end+=0.5')
 			.add(txtInTl(), '-=0.5')
 			.add(enterBubInTl())
 			.add(popInOutTl('#burst-logo', 'bottom right'))
 			.add(popInOutTl('#hearts'), '+=2')
 			.add(popInOutTl('#heart'), '+=1')
 			.add(popInOutTl('#stars'), '+=1')
-			// .seek('end')
-
+			// .seek('frame2')
 			// tl.pause(.6);
 	}
 
@@ -155,7 +154,6 @@
 		return gsap.timeline()
 			.fromTo('#txt', { scale:0, y:0 }, { duration:1, scale:1, transformOrigin:'0% 50%', ease:'back.out(1.2)'})
 			.fromTo('#txt span', { alpha:0 }, {alpha:1, duration: 0.2, ease:'none', stagger:0.1 },'-=1')
-			// .fromTo(txt.words, { alpha:0 }, {alpha:1, duration: 0.2, ease:'none', stagger:0.1 },'-=1') //try "center" and "edges"
 	}
 
 	function enterBubInTl( _prop={x:0, rotation:-5}){
@@ -201,7 +199,6 @@
 		// return x;
 	}
 
-	// console.groupEnd();
 	window.addEventListener('load', init);
 	window.addEventListener('resize', onResize, true);
 	

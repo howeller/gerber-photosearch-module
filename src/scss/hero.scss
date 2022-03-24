@@ -50,7 +50,8 @@ section {
 		img#wave_m {
 			@include media("<=phone") {
 				display: block;
-				width: 260%;
+				width: 300%;
+				// width: 260%;
 				// bottom: -20%;
 			}
 			@include media(">=desktop") {display: none;}
