@@ -50,15 +50,15 @@
 			.add('frame2','-=1.5')
 			.add(popInTl('#book'), 'frame2')
 			.add('end', 'frame2+=0.75')
-			.add(kidRollInTl('#kid1', 1, 360), 'end')
-			.add(kidRollInTl('#kid2', 0.5, -360), 'end')
-			.add(kidRollInTl('#kid3', 0.5, 360), 'end')
-			.add(kidRollInTl('#kid4', 1, -360), 'end')
+			.add(kidRollInTl('#kid1', 1.5, 360), 'end')
+			.add(kidRollInTl('#kid3', 1, 360), 'end')
+			.add(kidRollInTl('#kid2', 1, -360), 'end')
+			.add(kidRollInTl('#kid4', 1.5, -360), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end+=.3')
-			.add(enterBubInTl({x:0, rotation:-5}))
+			.add(enterBubInTl({x:0, rotation:-5}),'-=1')
 			.add(popInTl('#hearts', 'bottom left'), '-=1')
-			.add(txtInTl())
+			.add(txtInTl(), '-=0.5')
 			.add(popInOutTl('#burst-logo', 'bottom right'))
 			.add(popInOutTl('#hearts','bottom left'), '+=3')
 			.add(popInOutTl('#heart'), '+=.5')
@@ -84,14 +84,14 @@
 			.add(popInTl('#book'), '-='+(_waveSp/3))
 			.add('end','-=1')
 			.add(popInTl('#hearts'), 'end')
-			.add(kidRollInTl('#kid1', 1, -360), 'end')
-			.add(kidRollInTl('#kid2', 0.5, 360), 'end')
-			.add(kidRollInTl('#kid3', 1, 360), 'end')
-			.add(kidRollInTl('#kid4', 0.5, -360), 'end')
+			.add(kidRollInTl('#kid1', 1.3, -360), 'end')
+			.add(kidRollInTl('#kid2', 0.8, 360), 'end')
+			.add(kidRollInTl('#kid3', 1.3, 360), 'end')
+			.add(kidRollInTl('#kid4', 1.3, -360), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end')
-			.add(enterBubInTl())
-			.add(txtInTl())
+			.add(enterBubInTl(),'-=0.6')
+			.add(txtInTl(),'-=0.4')
 			.add(popInOutTl('#burst-logo', 'bottom right'))
 			.add(popInOutTl('#hearts'), '+=3')
 			.add(popInOutTl('#heart'), '+=1')
@@ -116,18 +116,18 @@
 			.to('#wave_m', {  x:getWaveX('#wave_m'), duration: _waveSp, ease:'power3.inOut'}, 'frame2')
 			.add(popInTl('#book'),'frame2+='+(_waveSp/2))
 			.add('end', 'frame2+='+(_waveSp-1.75))
-			.add(kidRollInTl('#kid1', 0.5, -360), 'end')
-			.add(kidRollInTl('#kid2', 0.5, 360), 'end')
-			.add(kidRollInTl('#kid4', 0.5, -360), 'end')
+			.add(kidRollInTl('#kid1', 1.1, -360), 'end')
+			.add(kidRollInTl('#kid2', 1.1, 360), 'end')
+			.add(kidRollInTl('#kid4', 1.1, -360), 'end')
 			.add(popInTl('#heart'), 'end')
 			.add(popInTl('#stars'), 'end+=0.5')
+			.add(enterBubInTl(), '-=1')
 			.add(txtInTl(), '-=0.5')
-			.add(enterBubInTl())
 			.add(popInOutTl('#burst-logo', 'bottom right'))
 			.add(popInOutTl('#hearts'), '+=2')
 			.add(popInOutTl('#heart'), '+=1')
 			.add(popInOutTl('#stars'), '+=1')
-			// .seek('frame2')
+			// .seek('end')
 			// tl.pause(.6);
 	}
 
@@ -168,31 +168,32 @@
 	function kidRollInTl(_id, _speed, _startRotation ) {
 		let props = getKidTweenProps(_id);
 
-		return gsap.timeline({defaults:{duration:_speed, ease:'power3.inOut'}})
-			.fromTo(_id, { x:props.x, y:props.y, rotation:_startRotation, scale:0.1}, { display:'block', x:0, y:0, rotation:0, scale:1, transformOrigin:'50% 50%'});
+		return gsap.timeline({defaults:{duration:_speed, ease:'power3.out'}})
+			.fromTo(_id, { x:props.x, y:props.y, rotation:_startRotation, scale:0.5}, { display:'block', x:0, y:0, rotation:0, scale:1, transformOrigin:'50% 50%'});
 	}
 	function getKidTweenProps(_id) {
 		let _bubProp = gsap.getProperty('#bubble-wrapper'),
 			_kidProp = gsap.getProperty(_id),
-			_bw = _bubProp('width')/2,
-			_bh = _bubProp('height')/2,
-			_kidX = _kidProp('left'),
-			_kidY = _kidProp('top'),
-			_distanceX = (_kidX > 0 ) ? (_kidX+_bw) * -1 : Math.abs(_kidX-_bw*2 ), // Determine if X position is a + or - #.
-			_distanceY = (_bh-_kidY > 0 ) ? (_kidY) * -1 : Math.abs(_kidY+_bh );
+			_bw = _bubProp('width'),
+			_bh = _bubProp('height'),
+			_centerX = _bubProp('left') + (_bw/2),
+			_kidX = _kidProp('left','px'),
+			_kidW = _kidProp('width','px'),
+			_kidH = _kidProp('height','px'),
+			_kidY = _kidProp('top','px'),
+			_distanceX = (_kidX-(_kidW/2)) *-1,
+			_distanceY = (_kidY-(_bh/2)) *-1;
 		// console.group(_id);
-
-		// // cl('? '+window.getComputedStyle(id('bubble-wrapper')).height);
-		// cl('bh '+_bh)
+		// cl(`'bubLEFT ${_bubProp('left')}`);
+		// cl('_centerX '+_centerX);
 		// cl(' _kidX '+ _kidX);
 		// cl(' _distanceX '+ _distanceX);
 		// cl(' _kidY '+ _kidY);
 		// cl(' _distanceY '+ _distanceY);
-
-		// console.table(bubProp);
 		// console.groupEnd();
 		return { x:_distanceX, y:_distanceY };
 	}
+
 	function getCenterX(_id){
 		return Math.round(windowWidth / 2 - (gsap.getProperty(_id, 'width') / 2));
 		// cl('	getCenterX '+x);
