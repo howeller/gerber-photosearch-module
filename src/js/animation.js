@@ -6,14 +6,14 @@
 	const id = txt => document.getElementById(txt);
 
 	function init(e){
-		cl('init');
+		// cl('init');
 		windowWidth = window.innerWidth;
 		gsap.set('.hero',{visibility:'visible'});
 		startAnimation(windowWidth);
 	}
 
 	function startAnimation() {
-		console.table(windowWidth);
+		// cl(windowWidth);
 
 		if (windowWidth > 1024) {
 			animateDesktop();
@@ -30,19 +30,19 @@
 		windowWidth = event.target.innerWidth;
 		tl.seek(0);
 		tl.kill();
-		cl('onResize: '+windowWidth);
+		// cl('onResize: '+windowWidth);
 		startAnimation();
 	}
 
 	function animateDesktop() {
-		cl('animateDesktop!');
+		// cl('animateDesktop!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 		let _waveSp = 6.5;
 
 		tl
 			.add('start')
-			.fromTo('#wave_dt', { /*x:'-50%', */y:'100%', skewX:.01},{y:0},'start')
+			.fromTo('#wave_dt', { y:'100%', skewX:.01},{y:0},'start')
 			.fromTo('#logo-wrapper', { scale:0, x:getCenterX('#logo-wrapper'), y:'50px', skewX:.1}, { scale:1.1, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
 			.to('#wave_dt', {  x:getWaveX('#wave_dt'), duration: _waveSp, ease:'power2.inOut'})
@@ -68,7 +68,7 @@
 	}
 
 	function animateTablet() {
-		cl('animateTablet!');
+		// cl('animateTablet!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 		let _waveSp = 6.5;
@@ -76,7 +76,6 @@
 		tl
 			.add('start')
 			.fromTo('#wave_tab', { y:'100%', skewX:.01},{y:0, duration:.5},'start')
-			// .fromTo('#wave_tab', { x:'-50%', y:'100%'},{y:0})
 			.fromTo('#logo-wrapper', { scale:0, x:0, y:'50%', skewX:.1 }, { scale:1.4, transformOrigin:'50% 50%', duration:1, ease:'back.out(1.3)'},'start')
 			.add(popInTl('#burst-logo','bottom right'))
 			.add('frame2','+=1')
@@ -103,7 +102,7 @@
 	}
 
 	function animateMobile() {
-		cl('animateMobile!');
+		// cl('animateMobile!');
 
 		tl = gsap.timeline({ defaults:{ paused:false, duration:0.5, ease:'power3.out' }});
 		let _waveSp = 6.5;
@@ -137,8 +136,6 @@
 	function getWaveX(_id){
 		let _props = gsap.getProperty(_id),
 			_distanceX = windowWidth - _props('width');
-		// cl('getWaveX '+_id);	
-		// cl('getWaveX '+_distanceX);
 		return _distanceX;
 	}
 
@@ -166,7 +163,6 @@
 			.fromTo('#enter-txt', { scale:0, y:0 }, { scale:1, duration:0.4}, '-=.3' )
 			.fromTo('#arrow-enter', { scale:0, y:'50%', x:'-50%' }, { scale:1, duration:0.4, transformOrigin:'0% 100%'}, '-=.3' )
 			.fromTo('#burst-enter .cls-3', { scale:0, y:0, x:0 }, { x:0, scale:1, duration:0.2, stagger:.1, ease:'back.out(1.5)', transformOrigin:'0% center'}, '-=0.5')
-			// .add(popInTl('#burst-enter', '0% 50%'),'-=0.5')
 	}
 	function kidRollInTl(_id, _speed, _startRotation ) {
 		let props = getKidTweenProps(_id);
@@ -186,21 +182,11 @@
 			_kidY = _kidProp('top','px'),
 			_distanceX = (_kidX-(_kidW/2)) *-1,
 			_distanceY = (_kidY-(_bh/2)) *-1;
-		// console.group(_id);
-		// cl(`'bubLEFT ${_bubProp('left')}`);
-		// cl('_centerX '+_centerX);
-		// cl(' _kidX '+ _kidX);
-		// cl(' _distanceX '+ _distanceX);
-		// cl(' _kidY '+ _kidY);
-		// cl(' _distanceY '+ _distanceY);
-		// console.groupEnd();
 		return { x:_distanceX, y:_distanceY };
 	}
 
 	function getCenterX(_id){
 		return Math.round(windowWidth / 2 - (gsap.getProperty(_id, 'width') / 2));
-		// cl('	getCenterX '+x);
-		// return x;
 	}
 
 	window.addEventListener('load', init);

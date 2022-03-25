@@ -8,6 +8,7 @@ const del = require('del'),
 	gcmq = require('gulp-group-css-media-queries'),
 	autoprefixer = require('gulp-autoprefixer'),
 	rename = require('gulp-rename'),
+	uglify = require('gulp-uglify'),
 	uglifycss = require('gulp-uglifycss');
 
 // Directory structure
@@ -38,7 +39,7 @@ function build() {
 	let _html = gulp.src(dir.html+'*.html')
 		.pipe(rename('index.html'));
 
-	let _js = gulp.src( dir.js+'**');
+	let _js = gulp.src( dir.js+'**')
 	// let _images = gulp.src(dir.images+'**')
 	// 	.pipe(gulp.dest(dir.dist+'images/'));
 
@@ -48,10 +49,17 @@ function build() {
 function images(){
 	return gulp.src(dir.images+'**').pipe(gulp.dest(dir.dist+'images/'));
 }
+function minifyJs(){
+	return gulp.src(dir.js+'**', '!'+dir.js+'*.min.js')
+		.pipe(uglify())
+		// .pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest(dir.dist))
+};
 
 gulp.task('clean', () => { return del(dir.dist+'**/*'); });
 gulp.task('build', build);
 gulp.task('sass', buildStyles);
+gulp.task('min', gulp.series('build', minifyJs));
 gulp.task('images', gulp.series('clean', images, 'sass', 'build'));
 gulp.task('default', gulp.series('sass', 'build'));
 // gulp.task('watch', function(callback) { return gulp.watch(dir.src+'**/**', gulp.series('default')); callback(); });
