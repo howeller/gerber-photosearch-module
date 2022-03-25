@@ -1,9 +1,9 @@
+import gsap from 'gsap';
+import { cl, id } from './utils';
+
 (function(window, document){
 
 	let tl, txt, windowWidth;
-
-	const cl = txt => console.log('%c '+txt,'background: rgba(51, 255, 0, 0.3); color: white;');
-	const id = txt => document.getElementById(txt);
 
 	function init(e){
 		cl('init');
@@ -13,7 +13,7 @@
 	}
 
 	function startAnimation() {
-		console.table(windowWidth);
+		cl(windowWidth);
 
 		if (windowWidth > 1024) {
 			animateDesktop();
